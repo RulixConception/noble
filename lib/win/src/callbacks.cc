@@ -100,15 +100,21 @@ void Emit::Scan(const std::string& uuid, int rssi, const Peripheral& peripheral)
     auto name = peripheral.name;
     auto txPowerLevel = peripheral.txPowerLevel;
     auto manufacturerData = peripheral.manufacturerData;
+    auto customData = peripheral.customData;
+    auto customDataLength = peripheral.customDataLength;
+    auto dataSections = peripheral.dataSections;
     auto serviceData = peripheral.serviceData;
     auto serviceUuids = peripheral.serviceUuids;
     mCallback->call([uuid, rssi, address, addressType, connectable, name, txPowerLevel,
-                     manufacturerData, serviceData,
+                     manufacturerData, customData, customDataLength, dataSections, serviceData,
                      serviceUuids](Napi::Env env, std::vector<napi_value>& args) {
         Napi::Object advertisment = Napi::Object::New(env);
         advertisment.Set(_s("localName"), _s(name));
         advertisment.Set(_s("txPowerLevel"), txPowerLevel);
+        advertisment.Set(_s("customDataLength"), customDataLength);
         advertisment.Set(_s("manufacturerData"), toBuffer(env, manufacturerData));
+        advertisment.Set(_s("customData"), toBuffer(env, customData));
+        advertisment.Set(_s("dataSections"), toBuffer(env, dataSections));
         auto array =
             serviceData.empty() ? Napi::Array::New(env) : Napi::Array::New(env, serviceData.size());
         for (size_t i = 0; i < serviceData.size(); i++)

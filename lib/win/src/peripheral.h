@@ -16,8 +16,11 @@ public:
     AddressType addressType = UNKNOWN;
     bool connectable = false;
     std::string name;
-    int txPowerLevel;
+    int txPowerLevel = 0;
     Data manufacturerData;
+    Data customData;
+    int customDataLength = 0;
+    Data dataSections;
     std::vector<std::pair<std::string, Data>> serviceData;
     std::vector<std::string> serviceUuids;
 };
