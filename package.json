@@ -67,7 +67,6 @@
     "ws": "^8.11.0"
   },
   "scripts": {
-    "__install": "node-gyp rebuild",
     "lint": "eslint \"**/*.js\"",
     "lint-fix": "eslint \"**/*.js\" --fix",
     "prebuild": "prebuildify --napi --strip",
