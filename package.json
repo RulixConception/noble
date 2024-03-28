@@ -22,6 +22,9 @@
     "bluetooth smart",
     "central"
   ],
+  "files": [
+    "build"
+  ],
   "main": "./index.js",
   "types": "./index.d.ts",
   "gypfile": true,
@@ -64,7 +67,7 @@
     "ws": "^8.11.0"
   },
   "scripts": {
-    "install": "node-gyp-build",
+    "__install": "node-gyp rebuild",
     "lint": "eslint \"**/*.js\"",
     "lint-fix": "eslint \"**/*.js\" --fix",
     "prebuild": "prebuildify --napi --strip",
