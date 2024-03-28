@@ -75,7 +75,6 @@
     "prebuild-linux": "prebuildify --napi --strip",
     "prebuild-download": "prebuildify-ci download",
     "pretest": "npm run rebuild",
-    "rebuild": "node-gyp rebuild",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov > .nyc_output/lcov.info",
     "test": "cross-env NODE_ENV=test mocha --recursive \"test/*.test.js\" \"test/**/*.test.js\" --exit"
   },
